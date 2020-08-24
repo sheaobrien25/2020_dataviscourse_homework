@@ -15,7 +15,7 @@ Critique the visualization, based on the following questions:
 
 ## Redesign Guidelines
 
-Your redesign should be submitted as an image showing a low-fidelity mock-up of your visualization as well as a text description of the design. The mock-up is not expected to be polished. In fact, the preferred way to create this would be to draw it by hand and take a picture. You can use any software to create the image, but you should write code to create it. While this image is not intended to look like a final product, it should be clear with your image and text what the proposed design would look like. In addition, your text description should also explain why you redesigned the visualization in this way. That is, what are the advantages of showing the data in this way.
+Your redesign should be submitted as an image showing a low-fidelity mock-up of your visualization as well as a text description of the design. The mock-up is not expected to be polished. In fact, the preferred way to create this would be to draw it by hand and take a picture. You can use any software to create the image, but you should not write code to create it. While this image is not intended to look like a final product, it should be clear with your image and text what the proposed design would look like. In addition, your text description should also explain why you redesigned the visualization in this way. That is, what are the advantages of showing the data in this way.
 
 ## Problem 1: Job Losses and Gains
 
