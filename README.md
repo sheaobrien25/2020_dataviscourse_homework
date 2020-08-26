@@ -6,10 +6,10 @@ More information can be found on the [course website](http://dataviscourse.net/)
 We suggest you clone this repository: 
 
 ```
-git clone https://github.com/dataviscourse/2020-dataviscourse-homework
+git clone https://github.com/dataviscourse/2020_dataviscourse_homework
 ```
 
-To receive updates and add newly released homeworks update your repository by cd-ing into the `2020-dataviscourse-homework` directory and running:
+To receive updates and add newly released homeworks update your repository by cd-ing into the `2020_dataviscourse_homework` directory and running:
 
 ```
 git pull
