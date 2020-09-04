@@ -47,4 +47,4 @@ Your score on this assignment will be as follows:
  - 25%: Redesign of provided visualization.
  - 10%: Selection of visualization. 
  - 20%: Critique of your selected visualization. 
- - 20%: Redesingn of your selected visualization.
+ - 20%: Redesign of your selected visualization.
