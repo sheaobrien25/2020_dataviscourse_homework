@@ -47,7 +47,7 @@ Now that `staircase()` is being called, let's make it do something. Fill out the
 
 <img src="figures/staircase.png" height="300">
 
-_Hint: you will probably want to add an `id` to the group containing the first bar chart to make it easy to select and iterate through its children._
+_Hint: you might use the `id` of the group containing the first bar chart to make it easy to select and iterate through its children._
 
 ## Part III: Reshaping Things with D3
 
