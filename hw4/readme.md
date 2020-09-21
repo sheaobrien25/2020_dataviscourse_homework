@@ -1,5 +1,5 @@
 # CS-5630 / CS-6630 Homework 4
-*Due: Friday, September 20, 11:59 pm.*
+*Due: Friday, Oct 2, 11:59 pm.*
 
 In this assignment you will build a visualization inspired by [Gapminder](https://www.gapminder.org/) to display world health data. The visualization is made up of three views: the map, the scatterplot, and the info box. 
 
