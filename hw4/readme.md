@@ -159,7 +159,7 @@ This gif demonstrated the desired behavior:
 
 ![Clicking Things](figs/click.gif)
 
-See also [this video](figs/click.mp4) for a higher resolution version.
+See also the demonstration video at `figs/demonstration.mp4` for a higher resolution version.
 
 
 Along with the ability to highlight on select, we need to be able to clear a selection. This means we will have to fill the `clearHighlight()` function for each of the views and call them in the `script.js` file. When you click on an element or anywhere on the screen that is not a country element, the selection should clear. 
