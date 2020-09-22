@@ -1,11 +1,11 @@
 # CS-5630 / CS-6630 Homework 4
 *Due: Friday, Oct 2, 11:59 pm.*
 
-In this assignment you will build a visualization inspired by [Gapminder](https://www.gapminder.org/) to display world health data. The visualization is made up of three views: the map, the scatterplot, and the info box. 
+In this assignment you will build a visualization inspired by [Gapminder](https://www.gapminder.org/) to display world health data. The visualization is made up of three views: a map, a scatterplot, and an info box. 
 
 The **map** provides geospatial context. Countries are color-coded by region and can be selected. 
 
-The **scatterplot** is also color-coded by region, with selectable country bubbles. The data shown along the scatterplot axes are chosen from two drop-down menus. A third drop-down allows the user to choose the data that maps to the size of the bubbles. Below the drop-down menus is a range slider that changes the data to reflect a specified year. 
+The **scatterplot** is also color-coded by region, with selectable country bubbles. The data shown along the scatterplot axes are chosen from two drop-down menus. A third drop-down allows users to choose the data that maps to the size of the bubbles. Below the drop-down menus is a range slider that changes the data to reflect a specified year. 
 
 The **info box** shows basic information about the selected country.
 
@@ -46,19 +46,9 @@ The project file structure looks like this:
         script.js
 
 
-## Running the Project
+Remember that you will need to be *serving* the homework directory, not just opening the HTML file in a browser. 
 
-To access the data files with javascript, you will need to be *serving* the homework directory, not just opening the HTML file in a browser. If your development environment doesn't already launch a server for you, you can start one with:
-
-    $ cd path/to/hw4
-
-    # For Python 2:
-    $ python -m SimpleHTTPServer
-
-    # For Python 3:
-    $ python -m http.server
-
-You can view the page at [http://localhost:8080](http://localhost:8080) (or the port prompted in your terminal). Before you submit you homework, you will want to make sure your submission is a valid html5 file. You can validate Check that it is valid by uploading it to the [W3C HTML Validator](https://validator.w3.org/#validate_by_upload).
+Before you submit you homework, you will want to make sure your submission is a valid html5 file. You can validate Check that it is valid by uploading it to the [W3C HTML Validator](https://validator.w3.org/#validate_by_upload).
 
 ## The Data
 
@@ -73,7 +63,7 @@ Here is a sample of the population data:
 2,dza,population,pop,Algeria,Upper middle income,africa,2503218,2512195,....,42679018,43333255
 ```
 
-Obviously, more years and the corresponding data follow where we put the  `....`.
+We've clipped some columns where we put the  `....` for the above example.
 
 You can access the data through the data object, which we create in `script.js` and pass to all constructors. The data object looks like this:
 
@@ -91,9 +81,9 @@ You can access the data through the data object, which we create in `script.js` 
 
 ![map](figs/map.PNG)
 
-We are going to start by building a map. The first thing to do for this is to fill in `drawMap()` in `map.js`. We have provided you with the projection in the constructor, including the scaling and translation necessary to center it in the designated map area. Note that we use the Winkel Tripel projection, which is [used by the National Geographic Society for world maps](https://www.nationalgeographic.org/media/selecting-map-projection/). Winkel tripel minimizes all distortions (area, angle, distance); you'll learn more about this in the maps lecture. 
+We are going to start by building a map. The first thing to do for this is to fill in `drawMap()` in `map.js`. We have provided you with the projection in the constructor, including the scaling and translation necessary to center it in the designated map area. Note that we use the Winkel Tripel projection, which is [used by the National Geographic Society for world maps](https://www.nationalgeographic.org/media/selecting-map-projection/). Winkel Tripel aims to minimizes all distortions (area, angle, distance); you'll learn more about this in the maps lecture. 
 
-We are going to be color-coding the countries by continent/region. We have provided the classes to color the countries in the css:
+We are going to be color-coding the countries by continent/region. We have provided the classes to color the countries in the css file:
 ```
     .africa {
         fill: #FFCA28;
@@ -109,28 +99,27 @@ We are going to be color-coding the countries by continent/region. We have provi
     }
 ```
 
-Refer to the [maps lecture](http://dataviscourse.net/tutorials/lectures/lecture-maps/) for details on how to implement the map. 
+Refer to the [maps coding lecture](http://dataviscourse.net/tutorials/lectures/lecture-maps/) for details on how to implement the map. 
 
 Also make sure that your map has the proper outline and graticule (the grid lines).
 
-The map view uses the GEOjson data for the geometry. We use the `area` column from the population data (`pop.csv`) to identify which continent a country belongs to. After mapping, you can assign the region class to the country paths to color the map accordingly. 
+The map view uses GEOjson data for the geometry. We use the `area` column from the population data (`pop.csv`) to identify which continent a country belongs to. After mapping, you can assign the region class to the country paths to color the map accordingly. 
 
 ## Part 2. Scatterplot
 
-There are four parts to the scatterplot view: the actual plot, the drop-down menus that we can select health data for the axes and circles, the year slider, and the circle legend. All of these are in the `gap_plot.js`. We have provided the circle legend for you. The drop-down menus and range slider for the year are also provided, but you will have to set them up to pass the data and the year to redraw the plot. 
+There are four parts to the scatterplot view: the actual plot, the drop-down menus where we can select health data for the axes and circles, the year slider, and the circle legend. All of these are in the `gap_plot.js`. We have provided the circle legend for you. The drop-down menus and range slider for the year are also provided, but you will have to set them up to pass the data and the year to redraw the plot. 
 
 
 ### 2.1 The Main Plot
 
-The scatterplot shows the relationship between two chosen dimensions. You will be able to select the datasets for the x and y axis in the drop-down menus. The plot is drawn by calling `drawPlot()` which will create the initial plot structure. You do not need to pass any paramters in the `drawPlot()` function. We will update the plot with the data using `updatePlot()` function which takes four parameters: the year, x data key, y data key, and circle data key. We have provided a class `PlotData` (a helper class in `gap_plot.js`) that will be your data structure for the data passed to `updatePlot()`. You will choose the for x, y and circle data by thier corresponding keys in the data object.
+The scatterplot shows the relationship between two chosen dimensions. You will be able to select the datasets for the x and y axis in the drop-down menus. The plot is drawn by calling `drawPlot()` which will create the initial plot structure. You do not need to pass any parameters in the `drawPlot()` function. We will update the plot with the data using `updatePlot()` function which takes four parameters: the year, x data key, y data key, and circle data key. We have provided a class `PlotData` (a helper class in `gap_plot.js`) that will serve as your data structure for the data passed to `updatePlot()`. You will choose the data that maps to x, y and circle size by their corresponding keys in the data object.
 
-You will have data that will size the circles called circleSizeIndicator. We have provided a `circleSizer` function for you. You will use this when defining your 'r' attribute for your circles. It takes the circle data as a parameter.
-
+You will have data that will scale the circles called circleSizeIndicator. We have provided a `circleSizer` function for you. You will use this when defining your 'r' attribute for your circles. It takes the circle data as a parameter.
 
 ![Gap Plot](figs/gapplot.PNG)
 
 ### 2.2 The Drop-down Menus
-There are three drop down menus: the x and y data menus, and the circle data menu. Changing the menus redraws the plot from the currently selected data.The drop-drown structure is provided for you, but you will set up the `drawPlot()` function to be called when a new data set is selected. All three drop down menus will have all of the data categories (Child mortality, GDP per capita, Life expectancy, Fertility rate, and Population) to select from.
+There are three drop down menus: the x and y data menus, and the circle data menu. Changing the menus redraws the plot from the currently selected data.The drop-drown structure is provided for you, but you will set up the `drawPlot()` function to be called when a new data set is selected. All three drop down menus will have all of the data categories (child mortality, GDP per capita, life expectancy, fertility rate, and population) to select from.
 
 This gif shows the desired behavior:
 
@@ -168,15 +157,15 @@ Along with the ability to highlight on select, we need to be able to clear a sel
 ## Part 4. Country Info Panel
 Now that we can select countries, we are going to pass the selected country information to an info box view. The info panel will update when a country element is selected from either the map or scatterplot views. When the year slider moves, the panel should also update along with the scatterplot. The info box should show all information about the country from all datasets. You will have to fill out the `constructor` and the `updateTextDescription()` in the `InfoBox` class and call `updateTextDescription()` within the `sript.js` file. For the changing of years in the data, you will need to fill out the `updateYear(year)` function in `script.js` and call it within the year slider to update the views.
 `updateTextDescription()` takes `activeCountry` and `activeYear` and for each of the key-value pairs in `this.data`, creates an `infoBoxData` object. `InfoBoxData` that takes the 4 parameters: 
-1. country (the country name from the data)
-2. region (the region name from the data)
-3. indicator_name (the name of the data category, such as 'Life Expectancy')
-4. value (the atual number value for the data indicator at the specified year)
+1. `country` (the country name from the data)
+2. `region` (the region name from the data)
+3. `indicator_name` (the name of the data category, such as 'Life Expectancy')
+4. `value` (the actual number value for the data indicator at the specified year)
 
 ## Grading
 
-35% Map View Implementation – map is drawn, countries are colored by region, graticule is drawn  
-35% Scatterplot Implementation – scatterplot is drawn, country bubbles are colored by region, plot updates by change in x, y, and circle data menus, year slider updates plot.  
-10% Info Box Implementation – Info box shows a selected country, color coded by region. Country name, region, and all of the stats are present.  
-20% Highlighting and Selection Implementation  – Both map and scatterplot countries select on click. Selection clears when you click on the screen but not on country. Year slider updates stats.
+35% Map view implementation – map is drawn, countries are colored by region, graticule is drawn  
+35% Scatterplot implementation – scatterplot is drawn, country bubbles are colored by region, plot updates by change in x, y, and circle data menus, year slider updates plot.  
+10% Info box implementation – info box shows a selected country, color coded by region. Country name, region, and all of the stats are present.  
+20% Highlighting and selection implementation – both map and scatterplot countries select on click. Selection clears when you click on the screen but not on country. Year slider updates stats.
 

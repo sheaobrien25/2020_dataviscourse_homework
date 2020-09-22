@@ -18,7 +18,7 @@ loadData().then(data => {
 
         that.activeCountry = countryID;
 
-        //TODO - your code goes here -
+        // TODO - your code goes here
     }
 
     // ******* TODO: PART 3 *******

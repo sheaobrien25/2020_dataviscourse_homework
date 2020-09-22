@@ -59,7 +59,7 @@ class Map {
         // You need to match the country with the region. This can be done using .map()
         // We have provided a class structure for the data called CountryData that you should assign the paramters to in your mapping
 
-        //TODO - your code goes here -
+        //TODO - your code goes here
     }
 
     /**
@@ -67,13 +67,13 @@ class Map {
      * @param activeCountry the country ID of the country to be rendered as selected/highlighted
      */
     updateHighlightClick(activeCountry) {
-        // ******* TODO: PART 3*******
+        // ******* TODO: PART 3 *******
         // Assign selected class to the target country and corresponding region
         // Hint: If you followed our suggestion of using classes to style
         // the colors and markers for countries/regions, you can use
         // d3 selection and .classed to set these classes on here.
 
-        //TODO - your code goes here -
+        //TODO - your code goes here
 
     }
 
@@ -81,7 +81,7 @@ class Map {
      * Clears all highlights
      */
     clearHighlight() {
-        // ******* TODO: PART 3*******
+        // ******* TODO: PART 3 *******
         // Clear the map of any colors/markers; You can do this with inline styling or by
         // defining a class style in styles.css
 
@@ -89,6 +89,6 @@ class Map {
         // the colors and markers for hosts/teams/winners, you can use
         // d3 selection and .classed to set these classes off here.
 
-        //TODO - your code goes here -
+        //TODO - your code goes here
     }
 }

@@ -104,7 +104,7 @@ class GapPlot {
         let svgGroup = d3.select('#chart-view').select('.plot-svg').append('g').classed('wrapper-group', true);
 
 
-        //TODO - your code goes here -
+        //TODO - your code goes here
 
 
         /* Below is the setup for the dropdown menu- no need to change this */
@@ -144,8 +144,6 @@ class GapPlot {
             .append('svg')
             .append('g')
             .attr('transform', 'translate(10, 0)');
-
-
     }
 
     /**
