@@ -1,103 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Homework 3</title>
     <style>
-      /* style div and headers */
-      div,
-      h2 {
-        text-align: center;
-      }
-
-      /* style of bar charts */
-      .bar-chart-x rect {
-        fill: rgb(241,151,186);
-      }
-
-      .bar-chart-y rect {
-        fill: rgb(79,175,211);
-      }
-
-      .bar-chart .hovered {
-        fill: #979696;
-      }
-
-      .scatter-plot .hovered {
-        fill: #979696;
-      }
-
-      /* style of line charts */
-      .line-chart {
-        stroke: rgb(79,175,211);
-        stroke-width: 2;
-        fill: none;
-      }
-
-      .line-chart-x {
-        stroke: rgb(241,151,186);
-      }
-
-      .line-chart-y {
-        stroke: rgb(79,175,211);
-      }
-
-      text {
-        fill: black;
-      }
-
-      /* style of area charts */
-      .area-chart {
-        fill: rgb(241,151,186);
-      }
-
-      .area-chart-x {
-        stroke: #979696;
-        stroke-width: 0.05;
-        fill: rgb(241,151,186);
-      }
-
-      .area-chart-y {
-        stroke: #979696;
-        stroke-width: 0.05;
-        fill: rgb(79,175,211);
-      }
-
-      /* style of scatter plot */
-      .scatter-plot circle {
-        fill: rgb(241,151,186);
-      }
-
-      /* style of scatter plot frame */
-      .scatter-plot rect {
-        fill: none;
-      }
-
-      .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
+        /* style div and headers */
+        
+        div,
+        h2 {
+            text-align: center;
+        }
+        /* style of bar charts */
+        
+        .bar-chart-x rect {
+            fill: rgb(241, 151, 186);
+        }
+        
+        .bar-chart-y rect {
+            fill: rgb(79, 175, 211);
+        }
+        
+        .bar-chart .hovered {
+            fill: #979696;
+        }
+        
+        .scatter-plot .hovered {
+            fill: #979696;
+        }
+        /* style of line charts */
+        
+        .line-chart {
+            stroke: rgb(79, 175, 211);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .line-chart-x {
+            stroke: rgb(241, 151, 186);
+        }
+        
+        .line-chart-y {
+            stroke: rgb(79, 175, 211);
+        }
+        
+        text {
+            fill: black;
+        }
+        /* style of area charts */
+        
+        .area-chart {
+            fill: rgb(241, 151, 186);
+        }
+        
+        .area-chart-x {
+            stroke: #979696;
+            stroke-width: 0.05;
+            fill: rgb(241, 151, 186);
+        }
+        
+        .area-chart-y {
+            stroke: #979696;
+            stroke-width: 0.05;
+            fill: rgb(79, 175, 211);
+        }
+        /* style of scatter plot */
+        
+        .scatter-plot circle {
+            fill: rgb(241, 151, 186);
+        }
+        /* style of scatter plot frame */
+        
+        .scatter-plot rect {
+            fill: none;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     </style>
-  </head>
+    <script src="script.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+</head>
 
-  <body>
+<body>
     <h3>CS-5630 / CS-6630 Homework 3</h3>
     <address>
-      <span>Your Name</span>
-      <span>Your Email</span>
-      <span>Your UID</span>
+      <span>Shea O'Brien, </span>
+      <span>shea.obrien@hsc.utah.edu, </span>
+      <span>u6012545</span>
     </address>
     <br />
     <hr />
     <br />
 
     <span>
-      <button>Staircase</button>
+      <button onclick="staircase()">Staircase</button>
     </span>
 
     <span>
       <label>Dataset:</label>
-      <select id="dataset">
+      <select onchange="changeData()" id="dataset">
         <option value="covid_us">The US</option>
         <option selected value="covid_utah">Utah</option>
         <option value="covid_ca">California</option>
@@ -105,15 +109,15 @@
       </select>
     </span>
 
-    <span> <input type="checkbox" id="random" /> Random Subset </span>
+    <span> <input onchange="changeData()" type="checkbox" id="random" /> Random Subset </span>
 
     <br />
 
     <div class="row">
-      <div>
-        <h2>Bar Charts</h2>
-        <div>
-          <svg width="350" height="230">
+        <div id="barchart_id">
+            <h2>Bar Charts</h2>
+            <div>
+                <svg width="350" height="230">
             <g id="aBarChart-axis"></g>
             <g class="bar-chart bar-chart-x" id="aBarChart" transform="translate(345, 0)">
               <rect width="100" height="12" transform="translate(0, 0) scale(-1, 1)"/>
@@ -133,16 +137,17 @@
               <rect width="150" height="12" transform="translate(0, 196) scale(-1, 1)"/>
             </g>
           </svg>
-          <svg width="350" height="230">
+                <svg width="350" height="230">
             <g id="bBarChart-axis"></g>
-            <g class="bar-chart bar-chart-y" id="bBarChart" transform="translate(5, 0)"></g>
+            <g class="bar-chart bar-chart-y" id="bBarChart" transform="translate(5, 0)">
+            </g>
           </svg>
+            </div>
         </div>
-      </div>
 
-      <div>
-        <h2>Line Charts</h2>
-        <svg  id="line-chart-svg" width="600" height="320">
+        <div>
+            <h2>Line Charts</h2>
+            <svg id="line-chart-svg" width="600" height="320">
           <g id="aLineChart-axis"></g>
           <g class="line-chart line-chart-x" transform="translate(50,15)">
             <path id="aLineChart"/>
@@ -152,35 +157,36 @@
             <path id="bLineChart"/>
           </g>
         </svg>
-      </div>
+        </div>
     </div>
 
     <div class="row">
-      <div>
-        <h2>Area Charts</h2>
-        <svg class="area-chart" width="300" height="300">
+        <div>
+            <h2>Area Charts</h2>
+            <svg class="area-chart" width="300" height="300">
           <g id="aAreaChart-axis"></g>
           <g class="area-chart-x" transform="translate(295,0) rotate(90)">
             <path id="aAreaChart"/>
           </g>
         </svg>
-        <svg class="area-chart " width="300" height="300">
+            <svg class="area-chart " width="300" height="300">
           <g id="bAreaChart-axis"></g>
           <g class="area-chart-y" transform="translate(5, 0) rotate(90) scale(1,-1)">
             <path id="bAreaChart"/>
           </g>
         </svg>
-      </div>
+        </div>
 
-      <div>
-        <h2>Scatterplot</h2>
-        <svg class="scatter-plot" width="600" height="300">
+        <div>
+            <h2>Scatterplot</h2>
+            <svg class="scatter-plot" width="600" height="300">
           <g transform="translate(180, 10) " id="scatterplot">
             <g id="x-axis" transform="translate(0, 240)"></g>
             <g id="y-axis" transform="translate(0, 0)"></g>
           </g>
         </svg>
-      </div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
