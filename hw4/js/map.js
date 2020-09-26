@@ -60,6 +60,22 @@ class Map {
         // We have provided a class structure for the data called CountryData that you should assign the paramters to in your mapping
 
         //TODO - your code goes here
+        let geoJSON = topojson.feature(world, world.objects.countries);
+
+        let path = d3.geoPath()
+          .projection(this.projection);
+
+        d3.select("#map-chart")
+            .append('svg')
+            .selectAll("path")
+            .data(geoJSON.features)
+            .enter().append("path")
+            .attr("d", path)
+            .attr("class", 'stroke');
+
+        let graticule = d3.geoGraticule();
+          d3.select("#map-chart svg").append('path')
+          .datum(graticule).attr('class', "graticule").attr('d', path).attr('fill', 'none');
     }
 
     /**
